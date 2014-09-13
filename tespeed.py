@@ -7,6 +7,7 @@ import argparse
 
 from SocksiPy import socks
 import socket
+import time
 
 # Magic!
 def getaddrinfo(*args):
@@ -68,7 +69,8 @@ class CallbackStringIO(StringIO):
 
 class TeSpeed:
 
-    def __init__(self, server = "", numTop = 0, servercount = 3, store = False, suppress = False, unit = False, chunksize=10240):
+    def __init__(self, server = "", numTop = 0, servercount = 3, store = False,
+                 suppress = False, unit = False, chunksize=10240):
 
         self.headers = {
             'Accept' : 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -590,7 +592,9 @@ class TeSpeed:
         self.TestDownload()
         self.TestUpload()
 
-        print_result("%0.2f,%0.2f,\"%s\",\"%s\"\n" % (self.down_speed, self.up_speed, self.units, self.servers))
+        print_result("%d,%0.2f,%0.2f,\"%s\",\"%s\"\n"
+                     % (time.time(), self.down_speed, self.up_speed,
+                        self.units, self.servers))
 
     def ListServers(self, num=0):
         
