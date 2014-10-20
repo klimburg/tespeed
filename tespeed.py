@@ -7,7 +7,6 @@ import argparse
 
 from SocksiPy import socks
 import socket
-import time
 
 # Magic!
 def getaddrinfo(*args):
